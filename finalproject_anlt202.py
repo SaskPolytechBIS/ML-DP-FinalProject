@@ -7,12 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1si4_nmZcRFkFoYcWAF94JmwXCy4lHE0b
 """
 
-# Install dependencies
-!pip install kagglehub[pandas-datasets]
-
-import kagglehub
-from kagglehub import KaggleDatasetAdapter
-
+# Install libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -50,7 +45,7 @@ df_test  = pd.read_csv('data/churn-bigml-20.csv')
 
 print(df_train.shape, df_test.shape)
 
-# 2. DATA EXPLORATION & PREPROCESSING
+# Data exploration & preprocessing
 df_train.info()
 df_test.info()
 
@@ -90,13 +85,5 @@ print("Numerical:", num_cols)
 # Outliers check (no handling needed, values reasonable)
 print(X_train[num_cols].describe())
 
-# 3. PREPROCESSING PIPELINE SETUP
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
-from sklearn.pipeline import Pipeline
 
-preprocessor = ColumnTransformer([
-    ('num', StandardScaler(), num_cols),
-    ('cat', OneHotEncoder(drop='first', handle_unknown='ignore'), cat_cols)
-])
 
