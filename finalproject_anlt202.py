@@ -8,10 +8,7 @@ Original file is located at
 """
 
 # Install libraries
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 import os
@@ -22,7 +19,7 @@ if not os.path.exists('data'):
     os.makedirs('data')
 
 # The larger one (churn-bigml-80.csv, 2666 rows) for training and cross-validation,
-# and the smaller one (churn-bigml-20.csv, 667 rows) for final testing/evaluation.
+# The smaller one (churn-bigml-20.csv, 667 rows) for final testing/evaluation.
 # No need for additional splitting.
 
 # Download the two dataset files automatically
@@ -49,7 +46,8 @@ print(df_train.shape, df_test.shape)
 df_train.info()
 df_test.info()
 
-# handling missing values
+# Handling missing values
+# Date cleaning: there are no missing values in both datasets
 print(df_train.isnull().sum().sum(), df_test.isnull().sum().sum())
 
 # Compute regression target: total_monthly_charge
